@@ -1,0 +1,30 @@
+{
+  "plugin_name": "猫眼购票按钮",
+  "plugin_desc": "仅供测试 禁传播 🈲️倒卖\n微信524170",
+  "plugin_author": "user",
+  "plugin_version": "1.0",
+  "plugin_rules": [
+    {
+      "host": "*.maoyan.com",
+      "path": "/maoyansh/myshow/ajax/v2/performance/*",
+      "method": "ALL",
+      "schema": "ALL",
+      "actions": [
+        {
+          "action": "modifyBody",
+          "type": "response",
+          "matchKey": "onSaleStatus\":\\d",
+          "matchType": "regex",
+          "replaceValue": "onSaleStatus\":1"
+        },
+        {
+          "action": "modifyBody",
+          "type": "response",
+          "matchKey": "onSaleTime\":\\d+",
+          "matchType": "regex",
+          "replaceValue": "onSaleTime\":1700000000000"
+        }
+      ]
+    }
+  ]
+}
